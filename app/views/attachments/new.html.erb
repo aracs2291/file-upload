@@ -1,0 +1,25 @@
+<section>
+	<h2 style="text-align: center; margin-top: 80px;">File Upload</h2>
+  <%= form_for @attachment, method: "post", multipart: true do |f| %>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, style: "width:250px;" %>
+    <%= f.file_field :file %>
+		<%= f.submit "Save", class: "btn btn-primary" %>
+	<% end %>
+
+  <h2 style="text-align: center; margin-top: 80px;">List of uploads</h2>
+  <table style="margin-left: 44%;">
+    <tr>
+      <th>Title</th>
+      <th>Attachment</th>
+    </tr>
+
+    <% @attachments.each do |attachment| %>
+      <tr>
+        <td><%= attachment.title %></td>
+        <td><%= link_to 'Show attachment', attachment.file.url, target: "_blank"%> </td>
+      </tr>
+    <% end %>
+  </table>
+
+</section>
